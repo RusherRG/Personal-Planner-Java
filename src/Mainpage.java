@@ -32,6 +32,7 @@ public class Mainpage extends JFrame {
 	String username;
 	private final Action action_2 = new SwingAction_2();
 	private JTextArea txtrTodo;
+	private final Action action_3 = new SwingAction_3();
 	/**
 	 * Launch the application.
 	 */
@@ -118,6 +119,11 @@ public class Mainpage extends JFrame {
 		btnAdd.setBounds(184, 162, 85, 21);
 		panel_2.add(btnAdd);
 		
+		JButton btnPending = new JButton("Pending");
+		btnPending.setAction(action_3);
+		btnPending.setBounds(184, 232, 85, 21);
+		panel_2.add(btnPending);
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		tabbedPane.addTab("Reminders", null, panel_1, null);
@@ -159,18 +165,16 @@ public class Mainpage extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Add data to todo table");
 		}
 		public void actionPerformed(ActionEvent e) {
-			Date dt = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String currentTime = sdf.format(dt);
-			String todo = txtrTodo.getText();
-			try {
-		        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", ""); //Creates a Connection with MYSQL Database
-				Statement st = con.createStatement();
-				st.execute("USE test");
-				st.execute("INSERT INTO todo (username,time,todo,status) VALUE ('"+username+"','"+currentTime+"','"+todo+"','"+0+"')");
-				System.out.println(' '+username+','+currentTime+','+todo+','+0);
-			}
-			catch(Exception ec) {System.out.println(ec);}
+			new ToDo().AddToDo(username,txtrTodo.getText());
+		}
+	}
+	private class SwingAction_3 extends AbstractAction {
+		public SwingAction_3() {
+			putValue(NAME, "Pending");
+			putValue(SHORT_DESCRIPTION, "Show all current tasks");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new ToDo().DisplayTasks(username);
 		}
 	}
 }
