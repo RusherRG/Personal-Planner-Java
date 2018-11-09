@@ -22,6 +22,14 @@ public class SQL_database_connectivity
 					+ "PRIMARY KEY(id)"
 					+ ")");
 			st.execute("INSERT INTO people (username,password,email) VALUES" + "('RusherRG','1234567@R','rushang.g@somaiya.edu'),('Netra','Ghaisas','netra.g@somaiya.edu')");
+		
+			st.execute("DROP TABLE IF EXISTS todo");
+			st.execute("CREATE TABLE todo ("+ "id BIGINT NOT NULL AUTO_INCREMENT,"+ "username VARCHAR(25),"
+					+ "time DATETIME,"
+					+ "todo LONGTEXT,"
+					+ "status INT(11),"
+					+ "PRIMARY KEY(id)"
+					+ ")");
 		}
 		catch(Exception e)
 		{

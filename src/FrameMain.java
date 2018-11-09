@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JPasswordField;
+import java.awt.Color;
+import java.awt.Font;
 
 public class FrameMain extends JFrame {
 
@@ -53,6 +55,7 @@ public class FrameMain extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 10, 10));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
@@ -72,11 +75,15 @@ public class FrameMain extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblUsername = new JLabel("Username : ");
-		lblUsername.setBounds(108, 216, 90, 29);
+		lblUsername.setForeground(Color.WHITE);
+		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblUsername.setBounds(98, 215, 90, 29);
 		contentPane.add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password : ");
-		lblPassword.setBounds(108, 257, 90, 28);
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPassword.setBounds(98, 256, 90, 28);
 		contentPane.add(lblPassword);
 		
 		JButton btnRegister = new JButton("Register");

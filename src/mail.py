@@ -1,4 +1,4 @@
-import smtplib,email.message,sys
+import smtplib,email.message,sys,datetime,time
 email_content = '''<html>
 <body style=" font: 1.2em/1.4 'Oswald', sans-serif;
   color: #fff;
@@ -30,6 +30,14 @@ email_content += '''</ul>
 </html>'''
 
 to_email = str(sys.argv[1])
+time_ = str(sys.argv[2])
+curr_time = str(datetime.datetime.now()).split()[1]
+time_ = list(map(float,time_.split(':')))
+curr_time = list(map(float,curr_time.split(':')))
+diff = [i[0]-i[1] for i in zip(time_,curr_time)]
+secs = diff[0]*3600 + diff[1]*60 + diff[2]
+time.sleep(secs)
+
 file = open('D:/GitHub Repository/Personal-Planner-Java/src/email.html','w')
 file.write(email_content)
 
