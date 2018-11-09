@@ -4,8 +4,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.FileWriter;
 
 public class ToDo {
+	public static void main(String args[]) {
+		ToDo td = new ToDo();
+		td.DisplayTasks("RusherRG");
+	}
 	public void AddToDo(String username, String todo) {
 		Date dt = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -27,9 +32,14 @@ public class ToDo {
 			Statement st = con.createStatement();
 			st.execute("USE test");
 			ResultSet res = st.executeQuery("SELECT * FROM todo WHERE username = '"+username+"' && status = 0");
+			FileWriter fw = new FileWriter("D://GitHub Repository//Personal-Planner-Java//src//mail_content.txt");
+			String task;
 			while(res.next()) {
-				System.out.println(res.getString("todo"));
+				task = res.getString("todo")+"\n";
+				System.out.print(task);
+				fw.write(task);
 			}
+			fw.close();
 		}
 		catch(Exception ec) {System.out.println(ec);}
 	}

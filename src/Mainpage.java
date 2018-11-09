@@ -175,6 +175,18 @@ public class Mainpage extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 			new ToDo().DisplayTasks(username);
+			String email = "";
+			try {
+		        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", ""); //Creates a Connection with MYSQL Database
+				Statement st = con.createStatement();
+				st.execute("USE test");
+				ResultSet res = st.executeQuery("SELECT * FROM people WHERE username = '"+username+"'");
+				while(res.next())
+					email = res.getString("email");
+			}
+			catch(Exception ec) {System.out.println(ec);}
+			System.out.println(email);
+			new SendEmail().sendmail(email);
 		}
 	}
 }

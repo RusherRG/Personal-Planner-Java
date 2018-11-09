@@ -23,6 +23,7 @@ public class Register extends JFrame {
 	private final Action action = new SwingAction();
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -83,6 +84,15 @@ public class Register extends JFrame {
 		passwordField_1.setBounds(218, 287, 250, 19);
 		passwordField_1.setEchoChar('*');
 		contentPane.add(passwordField_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(217, 194, 251, 19);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblEmail = new JLabel("Email :");
+		lblEmail.setBounds(174, 197, 64, 13);
+		contentPane.add(lblEmail);
 	}
 	private class SwingAction extends AbstractAction {
 		private Mainpage plan;
@@ -94,6 +104,7 @@ public class Register extends JFrame {
 			String username = textField.getText();
 			String password = new String(passwordField.getPassword());
 			String conf_password = new String(passwordField_1.getPassword());
+			String email = textField_1.getText();
 			try
 			{
 				if (password.equals(conf_password))
@@ -101,7 +112,7 @@ public class Register extends JFrame {
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", ""); //Creates a Connection with MYSQL Database
 					Statement st = con.createStatement();
 					st.execute("USE test");
-					st.execute("INSERT INTO people (username,password) VALUE ('"+username+"','"+password+"')");
+					st.execute("INSERT INTO people (username,password,email) VALUE ('"+username+"','"+password+"','"+email+"')");
 					System.out.println("Account Created");
 					dispose();
 					plan = new Mainpage(username);

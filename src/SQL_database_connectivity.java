@@ -18,9 +18,10 @@ public class SQL_database_connectivity
 			st.execute("DROP TABLE IF EXISTS people");
 			st.execute("CREATE TABLE people ("+ "id BIGINT NOT NULL AUTO_INCREMENT,"+"username VARCHAR(25),"
 					+ "password VARCHAR(25),"
+					+ "email VARCHAR(100),"
 					+ "PRIMARY KEY(id)"
 					+ ")");
-			st.execute("INSERT INTO people (username,password) VALUES" + "('RusherRG','1234567@R'),('Netra','Ghaisas')");
+			st.execute("INSERT INTO people (username,password,email) VALUES" + "('RusherRG','1234567@R','rushang.g@somaiya.edu'),('Netra','Ghaisas','netra.g@somaiya.edu')");
 		}
 		catch(Exception e)
 		{

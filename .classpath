@@ -8,5 +8,7 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="D:/Downloads/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="lib" path="D:/Downloads/sphinx4-5prealpha-src.zip"/>
+	<classpathentry kind="lib" path="D:/Downloads/mailactivation/activation.jar"/>
+	<classpathentry kind="lib" path="D:/Downloads/mailactivation/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
