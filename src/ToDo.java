@@ -33,7 +33,7 @@ public class ToDo {
 			Statement st = con.createStatement();
 			st.execute("USE test");
 			ResultSet res = st.executeQuery("SELECT * FROM todo WHERE username = '"+username+"' && status = 0");
-			FileWriter fw = new FileWriter("D://GitHub Repository//Personal-Planner-Java//src//mail_content.txt");
+			FileWriter fw = new FileWriter("F://Git stuff//Personal-Planner-Java//src//mail_content.txt");
 			String task;
 			int id;
 			while(res.next()) {
