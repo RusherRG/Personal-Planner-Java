@@ -495,8 +495,8 @@ public class Mainpage extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Dont ask silly questions :)");
 		}
 		public void actionPerformed(ActionEvent e) {
-			AssTest a = new AssTest();
-			a.speech(username);
+			VirtualAssistant assist = new VirtualAssistant(username);
+			assist.setVisible(true);
 		}
 	}
 	private class SwingAction_2 extends AbstractAction {
