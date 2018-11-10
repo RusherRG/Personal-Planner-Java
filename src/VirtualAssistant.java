@@ -151,9 +151,9 @@ public class VirtualAssistant extends JFrame {
 		catch(Exception exp) {System.out.println(exp);}
 	}
 	
-	public void speech(String username) {
+	public void speech() {
 		try {
-			String s = "python D:/\"GitHub Repository\"/Personal-Planner-Java/src/test.py "+username;
+			String s = "python D:/\"GitHub Repository\"/Personal-Planner-Java/src/test.py";
 			Process p = Runtime.getRuntime().exec(s);
 			System.out.println(s);
 		}
@@ -179,6 +179,7 @@ public class VirtualAssistant extends JFrame {
 			}
 			catch(Exception exp) {System.out.println(exp);}
 			textField_1.setText(msg);
+			speech();
 		}
 	}
 }
