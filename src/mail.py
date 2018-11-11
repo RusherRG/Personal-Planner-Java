@@ -22,7 +22,7 @@ visibility: visible;
 try:
     with open('D:/GitHub Repository/Personal-Planner-Java/src/mail_content.txt') as file:
         for i in file:
-            email_content += tasks + i[:-1] + '''</li>'''
+            email_content += tasks + " ".join(i.split()[:-1]) + '''</li>'''
 except:
     print("something")
 email_content += '''</ul>

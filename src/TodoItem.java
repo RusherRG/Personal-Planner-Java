@@ -104,10 +104,6 @@ public class TodoItem extends JPanel{
 				st.execute("UPDATE todo SET status=-1 WHERE id="+id+" AND status=0");
 				
 			}catch(Exception exc){System.out.println(exc+"Delete");}
-			/*btnDone.setVisible(false);
-			btnDelete.setVisible(false);
-			lblTodoEntry.setFont(new Font("Tahoma",Font.ITALIC,14));
-			lblTodoEntry.setText("Task deleted");*/
 		}
 	}
 }

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,8 @@ import java.io.FileWriter;
 import javax.swing.Action;
 import java.io.FileWriter;
 import java.io.FileReader;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class VirtualAssistant extends JFrame {
 
@@ -22,7 +25,7 @@ public class VirtualAssistant extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private final Action action = new SwingAction();
-	private JTextField textField_1;
+	private JTextArea textField_1;
 
 	/**
 	 * Launch the application.
@@ -44,26 +47,31 @@ public class VirtualAssistant extends JFrame {
 	 * Create the frame.
 	 */
 	public VirtualAssistant(String username) {
+		setTitle("Atom - Your Virtual Assistant");
 		this.username = username;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 440, 250);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 223, 357, 40);
+		textField.setBounds(10, 175, 340, 27);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnSend = new JButton("Send");
 		btnSend.setAction(action);
-		btnSend.setBounds(366, 223, 70, 40);
+		btnSend.setBounds(357, 175, 57, 27);
 		contentPane.add(btnSend);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 86, 179, 40);
+		textField_1 = new JTextArea();
+		textField_1.setForeground(Color.WHITE);
+		textField_1.setBackground(Color.LIGHT_GRAY);
+		textField_1.setOpaque(false);
+		textField_1.setBounds(10, 11, 406, 154);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 	}

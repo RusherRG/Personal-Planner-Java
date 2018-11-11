@@ -39,8 +39,8 @@ public class ToDo {
 			while(res.next()) {
 				task = res.getString("todo");
 				id = res.getInt("id");
-				System.out.print(task+"\t"+id+"\n");
-				fw.write(task+"\t"+id+"\n");
+				System.out.print(task+" "+id+"\n");
+				fw.write(task+" "+id+"\n");
 			}
 			fw.close();
 		}
