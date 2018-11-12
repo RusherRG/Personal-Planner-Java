@@ -15,6 +15,7 @@ import java.sql.Statement;
 
 import javax.swing.Action;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class Register extends JFrame {
 
@@ -49,19 +50,23 @@ public class Register extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
 		JLabel lblUsername = new JLabel("Username : ");
+		lblUsername.setForeground(Color.WHITE);
 		lblUsername.setBounds(154, 212, 112, 40);
 		contentPane.add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password :");
+		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setBounds(154, 253, 112, 22);
 		contentPane.add(lblPassword);
 		
 		JLabel lblConfirmPassword = new JLabel("Confirm Password : ");
+		lblConfirmPassword.setForeground(Color.WHITE);
 		lblConfirmPassword.setBounds(114, 285, 112, 22);
 		contentPane.add(lblConfirmPassword);
 		
@@ -91,6 +96,7 @@ public class Register extends JFrame {
 		textField_1.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email :");
+		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setBounds(174, 197, 64, 13);
 		contentPane.add(lblEmail);
 	}

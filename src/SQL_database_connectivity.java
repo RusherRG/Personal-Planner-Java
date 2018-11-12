@@ -1,4 +1,4 @@
-import java.sql.*;
+ import java.sql.*;
 public class SQL_database_connectivity 
 {
 	public static void main(String [] args) 

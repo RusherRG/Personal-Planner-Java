@@ -18,6 +18,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 import java.awt.GridLayout;
 import javax.swing.JTextArea;
 import java.sql.Connection;
@@ -55,7 +56,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerModel;
 import javax.swing.JProgressBar;
-
+import java.io.FileWriter;
 public class Mainpage extends JFrame {
 
 	private JPanel contentPane;
@@ -71,6 +72,7 @@ public class Mainpage extends JFrame {
 	private final Action action_4 = new SwingAction_4();
 	private final Action action_5 = new SwingAction_5();
 	JSpinner spinner;
+	private final Action action_6 = new SwingAction_6();
 	/**
 	 * Launch the application.
 	 */
@@ -96,7 +98,7 @@ public class Mainpage extends JFrame {
 		System.out.println(username);
 		setTitle("Planner");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 600);
+		setBounds(100, 100, 643, 593);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.desktop);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -104,12 +106,13 @@ public class Mainpage extends JFrame {
 		setContentPane(contentPane);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+		tabbedPane.setFont(new Font("Lucida Bright", Font.PLAIN, 18));
 		tabbedPane.setBackground(Color.WHITE);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel.setBackground(SystemColor.menu);
+		panel.setBackground(Color.DARK_GRAY);
 		tabbedPane.addTab("Home\r\n", null, panel, null);
 		tabbedPane.setForegroundAt(0, Color.BLACK);
 		tabbedPane.setEnabledAt(0, true);
@@ -117,45 +120,53 @@ public class Mainpage extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("ATOM");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setToolTipText("Virtual Assistant");
 		btnNewButton.setAction(action_1);
-		btnNewButton.setFont(new Font("HP Simplified Light", Font.BOLD, 15));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 18));
 		btnNewButton.setForeground(SystemColor.desktop);
-		btnNewButton.setBackground(SystemColor.windowBorder);
-		btnNewButton.setBounds(414, 465, 71, 70);
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
+		btnNewButton.setBounds(382, 441, 103, 94);
 		panel.add(btnNewButton);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(10, 11, 483, 189);
+		panel_4.setBackground(Color.DARK_GRAY);
+		panel_4.setForeground(Color.WHITE);
+		panel_4.setBounds(10, 54, 483, 146);
 		panel.add(panel_4);
 		panel_4.setLayout(null);
 		
 		JLabel lblHelloUser = new JLabel("Hello "+username);
-		lblHelloUser.setBounds(0, 44, 483, 101);
+		lblHelloUser.setForeground(new Color(175, 238, 238));
+		lblHelloUser.setBounds(0, 22, 483, 101);
 		panel_4.add(lblHelloUser);
 		lblHelloUser.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHelloUser.setFont(new Font("Calibri", Font.PLAIN, 40));
+		lblHelloUser.setFont(new Font("Lucida Bright", Font.ITALIC, 40));
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_5.setBackground(SystemColor.controlHighlight);
+		panel_5.setBackground(new Color(128, 128, 128));
 		panel_5.setBounds(10, 211, 483, 220);
 		panel.add(panel_5);
 		panel_5.setLayout(null);
 		
 		JLabel lblNotifications = new JLabel("Day Overview");
 		lblNotifications.setBounds(0, 21, 483, 50);
-		lblNotifications.setForeground(SystemColor.desktop);
+		lblNotifications.setForeground(Color.WHITE);
 		lblNotifications.setBackground(new Color(153, 180, 209));
 		lblNotifications.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNotifications.setFont(new Font("Calibri Light", Font.PLAIN, 30));
+		lblNotifications.setFont(new Font("Lucida Bright", Font.PLAIN, 30));
 		panel_5.add(lblNotifications);
 		
 		Date dt = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy, EEEE");
 		String currentTime = sdf.format(dt);
 		JLabel lblToday = new JLabel("Today: "+currentTime);
-		lblToday.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblToday.setForeground(Color.WHITE);
+		lblToday.setFont(new Font("Lucida Bright", Font.PLAIN, 25));
 		lblToday.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToday.setBounds(0, 82, 483, 40);
 		panel_5.add(lblToday);
@@ -171,43 +182,56 @@ public class Mainpage extends JFrame {
 			}
 			String count = new Integer(tcount).toString();
 			JLabel lblNewLabel = new JLabel("Pending tasks : " + count);
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblNewLabel.setForeground(Color.WHITE);
+			lblNewLabel.setFont(new Font("Lucida Bright", Font.PLAIN, 25));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel.setBounds(0, 152, 483, 50);
 			panel_5.add(lblNewLabel);
+			
+			JButton btnLogout = new JButton("Logout");
+			btnLogout.setFont(new Font("Dialog", Font.BOLD, 15));
+			btnLogout.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			btnLogout.setAction(action_6);
+			btnLogout.setBounds(382, 10, 111, 29);
+			panel.add(btnLogout);
 			
 		}catch(Exception ec) {System.out.println(ec);}
 	
 		//JPanel panel_2 = new JPanel();
 		To_do.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		To_do.setBackground(SystemColor.menu);
+		To_do.setBackground(Color.DARK_GRAY);
 		tabbedPane.addTab("To-do", null, To_do, null);
 		tabbedPane.setEnabledAt(1, true);
 		To_do.setLayout(null);
 		
 		txtrTodo = new JTextArea();
+		txtrTodo.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtrTodo.setBackground(Color.LIGHT_GRAY);
 		txtrTodo.setText("Todo");
-		txtrTodo.setBounds(105, 511, 384, 23);
+		txtrTodo.setBounds(105, 493, 384, 41);
 		To_do.add(txtrTodo);
 		
 		
 		
 		JPanel main_todo = new JPanel();
 		main_todo.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		main_todo.setBackground(SystemColor.controlHighlight);
-		main_todo.setBounds(10, 40, 479, 460);
+		main_todo.setBackground(Color.WHITE);
+		main_todo.setBounds(10, 40, 479, 443);
 		To_do.add(main_todo);
 		main_todo.setLayout(null);
 		
 		JButton btnAdd = new JButton("ADD");
+		btnAdd.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			//	main_todo.repaint();
 			}
 		});
 		btnAdd.setAction(action_2);
-		btnAdd.setBounds(10, 512, 85, 23);
+		btnAdd.setBounds(10, 493, 85, 42);
 		To_do.add(btnAdd);
 		
 		try {
@@ -230,6 +254,7 @@ public class Mainpage extends JFrame {
 		catch(Exception ec) {System.out.println(ec+"Init");}
 		
 		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		//btnRefresh.setAction(action_4);
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action) {
@@ -275,29 +300,32 @@ public class Mainpage extends JFrame {
 		SpinnerDateModel sm = 
 		new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
 		spinner = new JSpinner(sm);
+		spinner.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		JSpinner.DateEditor de = new JSpinner.DateEditor(spinner, "HH:mm:ss");
 		spinner.setEditor(de);
 		spinner.setBounds(10, 13, 96, 20);
 		To_do.add(spinner);
 		
 		JButton btnSetTime = new JButton("Set Time");
+		btnSetTime.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSetTime.setToolTipText("Set time for e-mail reminder");
 		btnSetTime.setAction(action_5);
 		btnSetTime.setBounds(116, 12, 96, 21);
 		To_do.add(btnSetTime);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(SystemColor.menu);
+		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setBorder(null);
 		tabbedPane.addTab("Tasks done", null, panel_2, null);
 		panel_2.setLayout(null);
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_1.setFont(new Font("Lucida Bright", Font.BOLD, 15));
 		tabbedPane_1.setBounds(10, 36, 479, 499);
 		panel_2.add(tabbedPane_1);
 		
 		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(SystemColor.controlHighlight);
+		panel_7.setBackground(Color.WHITE);
 		panel_7.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		tabbedPane_1.addTab("Today\r\n", null, panel_7, null);
 		panel_7.setLayout(null);
@@ -320,7 +348,7 @@ public class Mainpage extends JFrame {
 		catch(Exception ec) {System.out.println(ec);}
 		
 		JPanel panel_8 = new JPanel();
-		panel_8.setBackground(SystemColor.controlHighlight);
+		panel_8.setBackground(Color.WHITE);
 		panel_8.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		tabbedPane_1.addTab("Past", null, panel_8, null);
 		panel_8.setLayout(null);
@@ -355,6 +383,7 @@ public class Mainpage extends JFrame {
 		panel_8.add(lblDate);
 		
 		JButton button_1 = new JButton("Refresh");
+		button_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		//button_1.setIcon(new ImageIcon(Mainpage.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
 		button_1.setToolTipText("Click and then reopen tab to refresh");
 		button_1.setBounds(378, 11, 100, 23);
@@ -433,6 +462,12 @@ public class Mainpage extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			VirtualAssistant assist = new VirtualAssistant(username);
 			assist.setVisible(true);
+			try{
+				FileWriter fw = new FileWriter("D://GitHub Repository//Personal-Planner-Java//src//msg.txt");
+				fw.write("Hello, I'm ATOM, your virtual assistant. How can I help you?");
+				fw.close();
+				new VirtualAssistant(username).speech();
+			}catch(Exception ex) {System.out.println(ex);}
 		}
 	}
 	private class SwingAction_2 extends AbstractAction {
@@ -485,6 +520,17 @@ public class Mainpage extends JFrame {
             System.out.println(time);
             new ToDo().DisplayTasks(username);
             new SendEmail().sendmail(username, time);
+		}
+	}
+	private class SwingAction_6 extends AbstractAction {
+		public SwingAction_6() {
+			putValue(NAME, "Logout");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			FrameMain fm = new FrameMain();
+			fm.setVisible(true);
 		}
 	}
 }
