@@ -4,10 +4,11 @@ Java application for a personal planner
 # Functionalities to be Implemented : 
 
 - [X] Login
-- [ ] Index Template
+- [X] Index Template
 - [X] DataBase Connectivity
-- [ ] To-do lists
-- [ ] Day Overview/Notes/Diary
-- [ ] Virtual Assistant
-- [ ] Mail Reminders
+- [X] To-do lists
+- [X] Day Overview
+- [ ] Notes/Diary 
+- [X] Virtual Assistant
+- [X] Mail Reminders
 - [ ] Schedule Planner
